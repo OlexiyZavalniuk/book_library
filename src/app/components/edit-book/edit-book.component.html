@@ -1,0 +1,51 @@
+<div
+  style="
+    margin: 20px;
+    box-shadow: 0 0 20px rgba(138, 138, 138, 0.5);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 30px;
+  "
+>
+  <h3>Add Book</h3>
+  <div
+    style="
+      display: flex;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 0.4fr));
+      justify-content: center;
+    "
+  >
+    <div>
+      <label>Title: </label>
+      <input [(ngModel)]="book.title" type="text" style="width: 250px" />
+
+      <label>Genre: </label>
+      <input [(ngModel)]="book.genre" type="text" style="width: 250px" />
+
+      <label>Author: </label>
+      <input [(ngModel)]="book.author" type="text" style="width: 250px" />
+    </div>
+
+    <div>
+      <label>Content: </label>
+      <textarea
+        [(ngModel)]="book.content"
+        type="text"
+        style="height: 100px; width: 300px"
+        cols="40"
+        rows="5"
+      ></textarea>
+
+      <label>Image cover: </label>
+      <input
+        (change)="setPhoto($event)"
+        type="file"
+        accept="image/*"
+        style="width: 250px"
+      />
+    </div>
+  </div>
+  <button (click)="this.addBook()" style="margin: 5px">Add</button>
+  <button style="margin: 5px">Clear</button>
+</div>

@@ -1,0 +1,51 @@
+<dialog
+  open
+  *ngIf="book && show"
+  style="
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    width: 400px;
+    position: absolute;
+    top: 20%;
+    max-height: 450px;
+  "
+>
+  <div
+    style="
+      display: flex;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 0.4fr));
+      justify-content: center;
+    "
+  >
+    <img
+      style="min-width: 100px; max-width: 150; max-height: 150px"
+      src=""
+      onerror="this.src='https://i.pinimg.com/474x/06/a7/db/06a7db4db4ec8491ba1b1443d4f8c15a--stacked-books-stack-of-books-illustration.jpg'"
+    />
+    <div style="margin-left: 20px">
+      <h3>{{ book.title }}</h3>
+      <p>{{ book.author }}</p>
+      <p></p>
+      <p>{{ book.content }}</p>
+      <p>Reviews: {{ book.reviews.length }}</p>
+      <p>Rating: {{ book.rating }}</p>
+    </div>
+  </div>
+  <div style="overflow-y: scroll; max-height: 200px">
+    <div *ngFor="let review of book.reviews">
+      <div
+        style="
+          padding: 15px;
+          border: solid 2px rgba(196, 196, 196, 0.5);
+          border-bottom: 0;
+        "
+      >
+        <h4>{{ review.reviewer }}</h4>
+        <p>{{ review.message }}</p>
+      </div>
+    </div>
+  </div>
+  <form method="dialog">
+    <button (click)="change(false)">OK</button>
+  </form>
+</dialog>
